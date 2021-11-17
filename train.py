@@ -123,7 +123,7 @@ def training_function(config):
     epochs = config["epochs"]
     output_prefix = "nmt"
     output_dir = "checkpoints"
-    prefix_length = 10
+    prefix_length = config["prefix_length"]
 
     train_dataset = ConcatDataset(
         (
@@ -144,6 +144,7 @@ def training_function(config):
         val_dataset, batch_size=config["batch_size"], shuffle=False, drop_last=False
     )
 
+    accelerator.print("Loading models")
     model = ClipCaptionModel(prefix_length)
     model = model.to(accelerator.device)
     optimizer = AdamW(model.parameters(), lr=config["lr"])

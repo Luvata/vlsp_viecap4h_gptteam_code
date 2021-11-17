@@ -29,7 +29,9 @@ python encode_image.py
 python encode_text.py
 ```
 
-3. Training, we highly recommend using V38 free from Kaggle to train
+3. Training, we highly recommend using V38 from TRC to train, or Colab PRO since the VM need
+at least 28 GB RAM if training with TPU.
+
 ```
 accelerate launch --config_file ./config_tpu.yml train.py  # For v38, ~1h
 # accelerate launch --config_file ./config_tpu.yml train.py --batch-size=32  # For v28, ~2h
