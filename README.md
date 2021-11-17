@@ -1,7 +1,7 @@
 # VLSP 2021 - viecap4h challenge
 
 This project is a fork from rmokady's [CLIP_prefix_caption](https://github.com/rmokady/CLIP_prefix_caption)
-with some modification from gptteam to run with viecap4h challenge.
+with some modification from `gptteam` to run with viecap4h challenge.
 
 Our contributions are:
 
@@ -20,9 +20,9 @@ pip install git+https://github.com/openai/CLIP.git
 ./sh down_viecap.sh
 ```
 
-2. [Optional] Computing image embedding data and translation embedding, 
+2. [Optional] Computing image embedding data and text translation embedding, 
 you can take a look if you want to adapt to your custom dataset, 
-but for viecap we already provide theses embedding files in `down_viecap.sh`
+but for `viecap4h` we already provide theses embedding files in `down_viecap.sh`
 
 ```
 python encode_image.py
