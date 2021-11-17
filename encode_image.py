@@ -35,7 +35,16 @@ public_test = json.load(open("viecap/sample_submission.json", "r"))
 private_test = json.load(open("viecap/private_sample_sub.json", "r"))
 
 
-print("Train size:", len(train), "validation size:", len(val), "test size:", len(test))
+print(
+    "Train size:",
+    len(train),
+    "validation size:",
+    len(val),
+    "public test size:",
+    len(public_test),
+    "private test size:",
+    len(private_test),
+)
 clip_model, preprocess = clip.load("ViT-B/16", device=device)
 
 
