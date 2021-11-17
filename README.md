@@ -13,39 +13,30 @@ by joint training with billigual text dataset (iwslt15 en-vi) using a share text
 
 ## How to run
 
-1. Install require packages and download datasets
+1. Install require packages and download datasets, pretrained embedding
 ```
 pip install -r requirements.txt
 pip install git+https://github.com/openai/CLIP.git
 ./sh down_viecap.sh
 ```
 
-2. Prepare image captioning data (on cuda device)
+2. [Optional] Computing image embedding data and translation embedding, 
+you can take a look if you want to adapt to your custom dataset, 
+but for viecap we already provide theses embedding files in `down_viecap.sh`
 
 ```
 python encode_image.py
-```
-
-3. Prepare iwslt data (on cuda device)
-
-```
 python encode_text.py
 ```
-4. Optional: Configure huggingface's accelerate for CUDA/TPU
 
+3. Training, we highly recommend using V38 free from Kaggle to train
 ```
-accelerate config
-```
-
-5. Train: Training for 20 epochs in 30 mins using a single TPU V3-8.
-
-```
-python train.py
+accelerate launch --config_file ./config_tpu.yml train.py  # For v38, ~1h
+# accelerate launch --config_file ./config_tpu.yml train.py --batch-size=32  # For v28, ~2h
+# accelerate launch --config_file ./config_p100.yml train.py --batch-size=16  # For P100, ~1d
 ```
 
-6. Inference (run on cuda devices)
-
+4. Inference (run on cuda devices)
 ```
 python inference.py
 ```
-

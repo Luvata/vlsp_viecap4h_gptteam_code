@@ -16,3 +16,7 @@ mv vietcap4h-public-test/sample_submission.json viecap
 rm *.zip
 rm -rf viecap4h-public-train/
 rm -rf vietcap4h-public-test/
+gdown https://drive.google.com/uc?id=1_KME6Zj3NQQk6jb0nRfepsFKEiPTM7Hf
+unzip -qq b16.zip
+mv b16/*.pt .
+rm -rf b16/
