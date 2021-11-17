@@ -13,6 +13,7 @@ import os
 import sys
 from typing import Tuple, Optional
 from accelerate import Accelerator
+import argparse
 
 
 class ClipDataset(Dataset):
@@ -210,15 +211,26 @@ def training_function(config):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--epochs", type=int, default=20)
+    parser.add_argument("--batch-size", type=int, default=64, help="Batchsize, 64 for V38, 32 for V28, and 16 for P100")
+    parser.add_argument("--lr", type=float, default=2e-5)
+    parser.add_argument("--save-every", type=int, default=1)
+    parser.add_argument("--val-every", type=int, default=1)
+    args = parser.parse_args()
+
+
     config = {
-        "epochs": 20,
-        "lr": 2e-5,
-        "seed": 42,
-        "batch_size": 64,
+        "epochs": args.epochs,
+        "lr": args.lr,
+        "seed": args.seed,
+        "batch_size": args.batch_size,
         "prefix_length": 10,
-        "save_every": 1,
-        "val_every": 1,
+        "save_every": args.save_every,
+        "val_every": args.val_every,
     }
+
     training_function(config)
 
 
