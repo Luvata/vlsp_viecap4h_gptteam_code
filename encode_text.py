@@ -25,7 +25,7 @@ def tokenize(text):
     # so all sentence with token id > VOCAB_SIZE must be filtered out
 
 
-dataset = load_dataset("mt_eng_vietnamese")
+dataset = load_dataset("mt_eng_vietnamese", "iwslt2015-en-vi")
 en_sentences = [
     i["en"]
     for i in dataset["train"]["translation"]
