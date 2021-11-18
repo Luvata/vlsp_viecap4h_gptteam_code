@@ -67,9 +67,8 @@ before model biasing towards translation task.
 
 ## Acknowledgments
 
-We would like to thank Mr. Binh Nguyen and Mr. Anh Duong Nguyen from VietAI
-for helpful discussions, and TPU Research Cloud Team for sponsoring
-computing resources.
+We would like to thank VietAI team for helpful discussion, and TPU Research Cloud Team for 
+sponsoring computing resources.
 
 ## References
 
