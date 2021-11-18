@@ -61,11 +61,11 @@ accelerate launch --config_file ./config_tpu.yml train.py  # For v38, ~1h
 
 Checkpoint with best validation loss (~1.6) can be obtained at epochs 14-15, before model biasing towards translation task.
 
-4. Inference (run on cuda devices), you can follow [this notebook](notebooks/b16-infer.ipynb)
+4. Inference (run on cuda devices), you can follow [this notebook](notebooks/b16-infer.ipynb).
 
 ## Acknowledgments
 
-We would like to thank Mr. Binh Nguyen from VietAI for helpful discussions, 
+We would like to thank Mr. Binh Nguyen and Mr. Anh Duong Nguyen from VietAI for helpful discussions, 
 and TPU Research Cloud Team for sponsoring computing resources.
 
 ## References
