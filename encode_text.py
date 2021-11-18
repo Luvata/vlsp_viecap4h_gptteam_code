@@ -16,6 +16,18 @@ vtokenizer = AutoTokenizer.from_pretrained("imthanhlv/gpt2news")
 vtokenizer.pad_token = "<pad>"
 
 
+def norm(str):
+    return (
+        str.replace(" ,", ",")
+        .replace(" .", ".")
+        .replace(" :", ":")
+        .replace("&quot;", '"')
+        .replace(' "', '"')
+        .replace("&apos;", "'")
+        .replace(" '", "'")
+    )
+
+
 def tokenize(text):
     return vtokenizer.encode(
         text, max_length=MAX_TGT_SEQ_LEN, truncation=True, padding="max_length"
@@ -27,12 +39,12 @@ def tokenize(text):
 
 dataset = load_dataset("mt_eng_vietnamese", "iwslt2015-en-vi")
 en_sentences = [
-    i["en"]
+    norm(i["en"])
     for i in dataset["train"]["translation"]
     if (len(i["en"].strip()) > 0 and len(i["vi"].strip()) > 0)
 ]
 vi_sentences = [
-    i["vi"]
+    norm(i["vi"])
     for i in dataset["train"]["translation"]
     if (len(i["en"].strip()) > 0 and len(i["vi"].strip()) > 0)
 ]
