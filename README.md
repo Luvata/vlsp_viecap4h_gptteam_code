@@ -12,29 +12,29 @@ Our contributions are:
 - [x] Using pretrained Language Model: Vietnamese GPT-2 as decoder, with CLIP Vit-B16 as text
 and image encoder.
 - [x] Propose a novel method to improve image captioning performance, especially for 
-low-resources dataset, by joint training with billigual text dataset (iwslt15 en-vi) 
+low-resources dataset, by joint training with billingual text dataset (iwslt15 en-vi) 
 with a share text-image encoder (CLIP).
 
 ## Ablation study
 
-Our hypothesis is that in CLIP prefix caption, both encoder (CLIP) and decoder (GPT) are pretrained
-models, only the bridge part (which is MLP) was trained from scratch, so it could be the bottleneck
-if training dataset is limited.
+Our hypothesis is that in CLIP prefix caption architecture, both encoder (CLIP) and decoder (GPT) 
+are pretrained models, only MLP was trained from scratch, so it could be the bottleneck if
+training data is small.
 
 But since CLIP can encode both text and image into a same embedding space, we can make use of the
-billigual dataset to better generalize the bridging part by joint training image captioning task 
-(image - text) with translation task (text - text).
+billingual dataset to better generalize the bridging part (MLP) by joint training image captioning 
+task (image to text) with translation task (text to text).
 
-We run CLIP prefix caption with different configures, and the results also confirm that our 
+We run CLIP prefix caption with different configures, and the results also confirm that our
 hypothesis is correct.
 
-| Encoder              | Train task                 | Val loss | Public test |
-| -------------------- | -------------------------- | -------- | ----------- |
-| CLIP B32             | IC only (viecap)           | 1.92     | 0.26        |
-| CLIP B32             | Translation (iwslt15) only | 2.23     | 0.201       |
-| CLIP B32             | IC + Translation (iwslt15) | 1.74     | 0.289       |
-| CLIP B16             | IC + Translation (iwslt15) | 1.64     | 0.303       |
-| CLIP B16, x3 viecap  | IC + Translation (iwslt15) | 1.60     | **0.313**   |
+| Encoder  | Train task                 | Val loss | Public test |
+| -------- | -------------------------- | -------- | ----------- |
+| CLIP B32 | IC only (viecap)           | 1.92     | 0.26        |
+| CLIP B32 | Translation only (iwslt15) | 2.4      | 0.179       |
+| CLIP B32 | IC + Translation (1-1)     | 1.74     | 0.289       |
+| CLIP B16 | IC + Translation (1-1)     | 1.64     | 0.303       |
+| CLIP B16 | IC + Translation (3-1)     | 1.60     | **0.313**   |
 
 ## How to run
 
