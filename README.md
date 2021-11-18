@@ -7,19 +7,15 @@ with some modification from `gptteam` for viecap4h challenge.
 
 We got `0.313` in public tests and `0.309` in private test.
 
-Our contributions are:
-
-- [x] Using pretrained Language Model: Vietnamese GPT-2 as decoder, with CLIP Vit-B16 as text
-and image encoder.
-- [x] Propose a novel method to improve image captioning performance, especially for 
-low-resources dataset, by joint training with billingual text dataset (iwslt15 en-vi) 
-with a share text-image encoder (CLIP).
+We propose a novel method to improve image captioning performance, especially for 
+low-resources data, by joint training image captioning with translation using 
+a pretrained text-image encoder (CLIP) and pretrained GPT as decoder.
 
 ## Ablation study
 
 Our hypothesis is that in CLIP prefix caption architecture, both encoder (CLIP) and decoder (GPT) 
-are pretrained models, only MLP was trained from scratch, so it could be the bottleneck if
-training data is small.
+are pretrained models, only MLP was trained from scratch, so it could be the bottleneck if the size
+of training data is small.
 
 But since CLIP can encode both text and image into a same embedding space, we can make use of the
 billingual dataset to better generalize the bridging part (MLP) by joint training image captioning 
