@@ -1,5 +1,7 @@
 # GPTTeam solution - VLSP 2021 viecap4h Challenge
 
+![Architecture](gptteam.png)
+
 This project is a fork from rmokady's [CLIP_prefix_caption](https://github.com/rmokady/CLIP_prefix_caption)
 with some modification from `gptteam` for viecap4h challenge.
 
