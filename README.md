@@ -1,6 +1,6 @@
 # GPTTeam solution - VLSP 2021 viecap4h Challenge
 
-![Architecture](gptteam.png)
+![Architecture](gptteam.svg)
 
 This project is a fork from rmokady's [CLIP_prefix_caption](https://github.com/rmokady/CLIP_prefix_caption)
 with some modification from `gptteam` for viecap4h challenge.
@@ -14,13 +14,14 @@ a pretrained text-image encoder (CLIP) and pretrained GPT as decoder. We got
 ## Ablation study
 
 Our hypothesis is that in CLIP prefix caption architecture, both encoder (CLIP) 
-and decoder (GPT) are pretrained models, only MLP was trained from scratch, so 
-it could be the bottleneck if the size of training data is small.
+and decoder (GPT) are pretrained models, only mapping network (MLP) was trained 
+from scratch, so it could be the bottleneck if the size of training data is small.
 
 But since CLIP can encode both text and image into a same embedding space, we can
-make use of the billingual dataset to better generalize the bridging part (MLP) 
-by joint training image captioning task (image to text) with translation task 
-(text to text).
+make use of the billingual dataset to better generalize the mapping network (MLP) 
+by joint training image captioning task (image to Vietnamese caption) with
+translation task (English to Vietnamese), whereas both input images and input texts
+are encoded by CLIP.
 
 We run CLIP prefix caption with different configures, and the results also 
 confirm that our hypothesis is correct.
