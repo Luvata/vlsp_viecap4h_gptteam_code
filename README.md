@@ -34,6 +34,10 @@ confirm that our hypothesis is correct.
 | CLIP B16 | IC + Translation (1-1)     | 1.64     | 0.303       |
 | CLIP B16 | IC + Translation (3-1)     | 1.60     | **0.313**   |
 
+We log our experiments at this [sheet](https://docs.google.com/spreadsheets/d/1-HGk7K6uIjnMhZYYp9WBZmSnOwSViBEbdYABbytloxk/edit#gid=0).
+The pretrained models link in tranfer.sh are all expired,
+we will update it on late commit.
+
 ## How to run
 
 1. Install require packages and download datasets, pretrained embedding.
